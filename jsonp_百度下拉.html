@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			display: block;
+			margin: 300px auto;
+			width: 800px;
+		}
+		.text{
+			height: 40px;
+			width: 800px;
+			border: 2px solid #ededed;
+		}
+		.container{
+			width: 800px;
+		}
+	</style>
+</head>
+<body id="body">
+	<!-- https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=%E5%A3%AE%E5%A3%AE&cb=my -->
+	<div class="box">
+		<input type="text" class="text" id="text">
+		<div class="container" id="container">
+	</div>
+</body>
+<script>
+	function fn (data) {
+		let list = data.s
+		let html = ''
+		list.map((item) => {
+			html += `<p>${item}</p>`
+		})
+		slider_down.innerHTML = html
+	}
+	let input = document.getElementById('text');
+    let slider_down = document.getElementById('container');
+
+    input.onkeyup = function() {
+    	if(this.value=='') {
+    		slider_down.innerHTML = ''
+    	}   		
+    	let oScript = document.createElement('script');		// 创建script标签
+    	oScript.setAttribute("id","jsonp")
+        oScript.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${this.value}&cb=fn`		
+        document.body.appendChild(oScript)		// 添加到body最下面
+    }
+
+</script>
+</html>
