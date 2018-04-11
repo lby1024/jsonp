@@ -27,26 +27,27 @@
 	</div>
 </body>
 <script>
-	function fn (data) {
-		let list = data.s
-		let html = ''
-		list.map((item) => {
-			html += `<p>${item}</p>`
-		})
-		slider_down.innerHTML = html
-	}
-	let input = document.getElementById('text');
-    let slider_down = document.getElementById('container');
+function fn (data) {
+	let list = data.s
+	let html = ''
+	list.map((item) => {
+		html += `<p>${item}</p>`
+	})
+	slider_down.innerHTML = html
+}
+	
+let input = document.getElementById('text');
+let slider_down = document.getElementById('container');
 
-    input.onkeyup = function() {
-    	if(this.value=='') {
-    		slider_down.innerHTML = ''
-    	}   		
-    	let oScript = document.createElement('script');		// 创建script标签
-    	oScript.setAttribute("id","jsonp")
-        oScript.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${this.value}&cb=fn`		
-        document.body.appendChild(oScript)		// 添加到body最下面
-    }
+input.onkeyup = function() {
+	if(this.value=='') {
+		slider_down.innerHTML = ''
+	}   		
+	let oScript = document.createElement('script');		// 创建script标签
+	oScript.setAttribute("id","jsonp")
+	oScript.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${this.value}&cb=fn`		
+	document.body.appendChild(oScript)		// 添加到body最下面==>>执行上面fn()
+}
 
 </script>
 </html>
